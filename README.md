@@ -9,5 +9,5 @@ Choose which currencies to convert between from and then click the button undern
 # Credits 
 [Anthony Hrabowski](https://github.com/Ajhrabowski), [Ben Rodriguez](https://github.com/benrodriguezmoran), [Megan Sargent](https://github.com/mrsargent00), [Micah Dershem](https://github.com/G303K)
 
-# License
+#License
 Please refer to LICENSE in the repo
