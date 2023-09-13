@@ -22,14 +22,14 @@ Read more about MIT here:
 This application is a project assignment for the MSU Coding Bootcamp.
 In this project we were tasked with applying concepts learned throughout past modules to follow a given criteria.
 
-A user will be able to select a country and input a currency amount relative to that country.
-The user will then select a country in which to convert the currency amount by clicking a  
+A user will be able to select two countries and input a currency amount relative to the first country in a textbox.
+The user will then select a country in which to convert the currency amount by clicking a button.
+After the button is clicked the amount will be displayed relative to the desired currency used in the selected country.    
 
 ## Deployed application
 - (PLACEHOLDER URL)
 
-
- ![05-third-party-apis-homework-demo](https://github.com/G303K/Module-5-Challenge/assets/139593153/614cfb78-7226-49dc-b19c-31d71a745884)
+- (PLACEHOLDER GIF OF APPLICATION)
 
 ## Installation
 
@@ -43,7 +43,7 @@ To use, first download the above required applications in [Installation](#instal
 
 - Clone the repository to your local machine.
 - After cloning the repository, open the directory using Visual Studio Code.
-- To view content used, expand the MODULE-5-CHALLENGE folder. 
+- To view content used, expand the (PLACEHOLDER) folder. 
 
 
 ## Contributors:
@@ -56,10 +56,3 @@ Group Participants:
 - [Ben Rodriguez](https://github.com/benrodriguezmoran)
 - [Megan Sargent](https://github.com/mrsargent00)
 - [Micah Dershem](https://github.com/G303K)
-
-  ## Questions?
-
-  ### Reach me here:
-
-* Github https://github.com/G303K
-* Email: micder18@gmail.com
