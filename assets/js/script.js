@@ -1,4 +1,39 @@
 const API_ENDPOINT = 'https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk';
+var currencies = [
+    "EUR",
+    "USD",
+    "JPY",
+    "BGN",
+    "CZK",
+    "DKK",
+    "GBP",
+    "HUF",
+    "PLN",
+    "RON",
+    "SEK",
+    "CHF",
+    "ISK",
+    "NOK",
+    "HRK",
+    "RUB",
+    "TRY",
+    "AUD",
+    "BRL",
+    "CAD",
+    "CNY",
+    "HKD",
+    "IDR",
+    "ILS",
+    "INR",
+    "KRW",
+    "MXN",
+    "MYR",
+    "NZD",
+    "PHP",
+    "SGD",
+    "THB",
+    "ZAR"
+]
 
 // Function to convert currency
 async function convertCurrency(amount, fromCurrency, toCurrency) {
