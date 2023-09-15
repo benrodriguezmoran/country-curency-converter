@@ -33,8 +33,14 @@ var currencies = [
     "SGD",
     "THB",
     "ZAR"
-]
+];
 
+ 
+currencies.forEach(currency => {
+    $('.currencyDropdown').forEach(dropdown => {
+        
+    });
+});
 // Function to convert currency
 async function convertCurrency(amount, fromCurrency, toCurrency) {
     try {
@@ -56,6 +62,7 @@ async function convertCurrency(amount, fromCurrency, toCurrency) {
         throw error;
     }
 }
+
 
 // Example usage:
 const amount = 100; // Replace with the amount you want to convert
