@@ -38,9 +38,14 @@ var currencies = [
  
 currencies.forEach(currency => {
     $('.currencyDropdown').forEach(dropdown => {
-        
+        dropdown.append(`<option value="${currency}">${currency}</option>`)
     });
 });
+
+
+
+
+
 // Function to convert currency
 async function convertCurrency(amount, fromCurrency, toCurrency) {
     try {
