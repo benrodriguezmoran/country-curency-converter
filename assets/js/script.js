@@ -38,10 +38,7 @@ var currencies = [
  
 currencies.forEach(currency => {
     $('.currencyDropdown').forEach(dropdown => {
-        dropdown.append(`
-        <option value="${currency}">${currency}</option>`
-        
-        )
+        dropdown.append(`<option value="${currency}">${currency}</option>`)
     });
 });
 
