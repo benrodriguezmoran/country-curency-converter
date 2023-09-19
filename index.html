@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Currency Converter</title>
+
+    <!-- CSS for centering the sub-header -->
+    <style>
+      #date-time-header {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <!-- Header -->
+    <!-- Main Header -->
     <h1 class="page-header">Currency Converter</h1>
+
+    <!-- Sub-header for Date and Time (centered) -->
+    <h2 id="date-time-header">Current Date and Time:</h2>
 
     <!-- Flex Container -->
     <div class="flex-container">
@@ -52,12 +62,11 @@
         <p>Flex Box 2 Content</p>
       </div>
     </div>
-    <!DOCTYPE html>
-    <html lang="en">
-      <div class="flex-box" id="info-box">
-        <!-- Information from JavaScript will be displayed here -->
-      </div>
-    </html>
+
+    <!-- Info Box -->
+    <div class="flex-box" id="info-box">
+      <!-- Information from JavaScript will be displayed here -->
+    </div>
 
     <!-- Include JavaScript and jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -65,3 +74,4 @@
     <script src="assets/js/script.js"></script>
   </body>
 </html>
+
