@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Parse the JSON response if it's successful
         try {
           var response = JSON.parse(this.responseText);
-
+          console.log(response);
           // Display the information in the flex box
           displayInformation(response);
         } catch (error) {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Create and populate elements for the currency data
     const currencyValue = document.createElement("p");
-    currencyValue.textContent = "Currency Value: " + data.value;
+    currencyValue.textContent = "Currency Value: " + JSON.stringify(data.data);
 
     // Append elements to the currency data div
     currencyDataDiv.appendChild(currencyValue);
