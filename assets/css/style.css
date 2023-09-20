@@ -1,3 +1,10 @@
+body {
+  background-image: url(/assets/1.png);
+  background-repeat: no-repeat;
+  position: center;
+  background-size: cover;
+}
+
 .butt {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
@@ -5,35 +12,38 @@
 .page-header {
   font-size: 24px;
   text-align: center;
-  background-color: #333;
+  background: rgba(96, 96, 96, 0.5);
   color: #fff;
   padding: 10px;
+  box-shadow: black 3px 3px;
+  box-sizing: 50px 25px;
 }
 
 .flex-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .flex-box {
   flex: 1;
-  background-color: #f2f2f2;
+  background: rgba(255, 255, 255, 0.5);
   padding: 20px;
+  border-bottom: dotted 2px;
 }
 
 .generate-button {
-  background-color: #007bff;
+  background-color: #4000ff;
   color: #fff;
   padding: 10px 20px;
-  border: none;
+  border: solid black;
   cursor: pointer;
 }
 
 #date-time-header {
   text-align: center;
+  font-size: 30px;
+  border-bottom: dotted black 2px;
 }
-    
-
 
