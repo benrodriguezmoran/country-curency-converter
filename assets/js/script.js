@@ -15,26 +15,31 @@ document.addEventListener('DOMContentLoaded', function () {
   updateTimeAndDate();
 
   // Function to make an XMLHttpRequest and display information in the flex box
-  function fetchDataFromAPI() {
+  function fetchDataFromAPI(baseCurrency, targetCurrency) {
     var oReq = new XMLHttpRequest();
+    var response;
+    var additionalRequestStr;
     oReq.addEventListener("load", function () {
       if (oReq.status === 200) {
         // Parse the JSON response if it's successful
         try {
-          var response = JSON.parse(this.responseText);
+          response = JSON.parse(this.responseText);
           console.log(response);
-          // Display the information in the flex box
-          displayInformation(response);
         } catch (error) {
           console.error("Error parsing JSON:", error);
+          return;
         }
       } else {
         console.error("Request failed with status:", oReq.status);
+        return;
       }
     });
+    if (typeof baseCurrency === 'undefined') {} else {
+      additionalRequestStr = toString(targetCurrency + '&base_currency=' + baseCurrency)
+    }
     oReq.open(
       "GET",
-      "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies="
+      "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=" + additionalRequestStr
     );
     oReq.send();
   }
