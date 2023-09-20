@@ -15,64 +15,35 @@ document.addEventListener('DOMContentLoaded', function () {
   updateTimeAndDate();
 
   // Function to make an XMLHttpRequest and display information in the flex box
-  function fetchDataFromAPI() {
+  function fetchDataFromAPI(baseCurrency, targetCurrency) {
     var oReq = new XMLHttpRequest();
+    var response;
+    var additionalRequestStr;
     oReq.addEventListener("load", function () {
       if (oReq.status === 200) {
         // Parse the JSON response if it's successful
         try {
-          var response = JSON.parse(this.responseText);
+          response = JSON.parse(this.responseText);
           console.log(response);
-          // Display the information in the flex box
-          displayInformation(response);
         } catch (error) {
           console.error("Error parsing JSON:", error);
+          return;
         }
       } else {
         console.error("Request failed with status:", oReq.status);
+        return;
       }
     });
+    if (typeof baseCurrency === 'undefined') {} else {
+      additionalRequestStr = toString(targetCurrency + '&base_currency=' + baseCurrency)
+    }
     oReq.open(
       "GET",
-      "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk"
+      "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=" + additionalRequestStr
     );
     oReq.send();
   }
 
-  // Function to display information in the flex box
-  function displayInformation(data) {
-    // Select the flex box by its id
-    const infoBox = document.getElementById("info-box");
-
-    // Clear any previous content in the flex box
-    infoBox.innerHTML = "";
-
-    // Create and populate elements with data
-    const infoParagraph = document.createElement("p");
-    infoParagraph.textContent = "Information from the API:";
-
-    // Create a div element to hold the currency data
-    const currencyDataDiv = document.createElement("div");
-    currencyDataDiv.className = "currency-data"; // You can define a CSS class for styling
-
-    // Create and populate elements for the currency data
-    const currencyValue = document.createElement("p");
-    currencyValue.textContent = "Currency Value: " + JSON.stringify(data.data);
-
-    // Append elements to the currency data div
-    currencyDataDiv.appendChild(currencyValue);
-
-    // Append elements to the flex box
-    infoBox.appendChild(infoParagraph);
-    infoBox.appendChild(currencyDataDiv);
-
-    // Apply styling to the flex box and currency data div
-    infoBox.style.backgroundColor = "lightblue";
-    currencyDataDiv.style.padding = "10px";
-    currencyDataDiv.style.border = "1px solid #ddd";
-  }
-
-  // Rest of your code...
   const generateButton = document.getElementById('generate-button');
   generateButton.addEventListener('click', fetchDataFromAPI);
 });
