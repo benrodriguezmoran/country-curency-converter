@@ -42,7 +42,6 @@ function fetchDataFromAPI(baseCurrency, targetCurrency) {
     if (typeof baseCurrency === 'undefined') {additionalRequestStr = "";} else {
       additionalRequestStr = targetCurrency + "&base_currency=" + baseCurrency;
     }
-    console.log(additionalRequestStr);
     oReq.open(
       "GET",
       "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=" + additionalRequestStr
