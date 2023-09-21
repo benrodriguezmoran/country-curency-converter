@@ -35,7 +35,7 @@ function fetchDataFromAPI(baseCurrency, targetCurrency) {
       }
     });
     if (typeof baseCurrency === 'undefined') {additionalRequestStr = null;} else {
-      additionalRequestStr = toString(targetCurrency + '&base_currency=' + baseCurrency);
+      additionalRequestStr = (targetCurrency + '&base_currency=' + baseCurrency);
     }
     console.log(additionalRequestStr);
     oReq.open(
