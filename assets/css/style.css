@@ -1,49 +1,42 @@
 body {
-  background: url(/assets/1.png) ;
+  background: url(../1.png);
   background-repeat: no-repeat;
   position: center;
   background-size: cover;
 }
 
-.butt {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
 .page-header {
-  font-size: 24px;
+  font-size: 50px;
   text-align: center;
   background: rgba(96, 96, 96, 0.5);
   color: #fff;
   padding: 10px;
   box-shadow: black 3px 3px;
   box-sizing: 50px 25px;
+
 }
 
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
+.grid{
+  text-align: center;
+  font-size: 45px ;
+  border-bottom: black dotted 10px;
+  background-color: rgba(215, 215, 215, 0.5);
+  line-height: 70px
 }
 
-.flex-box {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 20px;
-  border-bottom: dotted 2px;
-}
 
-.generate-button {
-  background-color: #4000ff;
-  color: #fff;
-  padding: 10px 20px;
-  border: solid black;
-  cursor: pointer;
+.grid2{
+  text-align: center;
+  font-size: 45px ;
+  border-bottom: black dotted 10px;
+  background-color: rgba(215, 215, 215, 0.5);
+  line-height: 70px;
 }
 
 #date-time-header {
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
   border-bottom: dotted black 2px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
