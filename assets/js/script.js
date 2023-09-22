@@ -56,6 +56,8 @@ function fetchDataFromAPI(baseCurrency, targetCurrency) {
   console.log(fetchDataFromAPI("USD","CAD"));
   
 });
+
+
 // Define a callback function to handle the response
 function handleResponse(response) {
   if (!response.ok) {
