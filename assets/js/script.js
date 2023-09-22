@@ -56,3 +56,29 @@ function fetchDataFromAPI(baseCurrency, targetCurrency) {
   console.log(fetchDataFromAPI("USD","CAD"));
   
 });
+
+
+// Define a callback function to handle the response
+function handleResponse(response) {
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }  // Assuming the response is JSON, you can parse it here
+  return response.json();
+}// Define a function to make the HTTP request and call the callback
+function makeHttpRequest(url, callback) {
+  fetch(url)
+    .then(handleResponse)
+    .then(data => {
+      // Call the callback function with the data from the response
+      callback(data);
+    })
+    .catch(error => {
+      console.error(`Error: ${error.message}`);
+    });
+}// Example usage:
+const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1'; // Replace with your API URL// Define the callback function to handle the data
+function handleData(data) {
+  console.log('Received data:', data);
+  // Perform your desired action with the data here
+}// Make the HTTP request and pass the callback function
+makeHttpRequest(apiUrl, handleData);
