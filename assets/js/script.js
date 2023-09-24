@@ -1,17 +1,14 @@
 const apiUrl = "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=";
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
   // Function to update the time and date sub-header
   function updateTimeAndDate() {
-    // Select the sub-header element by its id
     const dateTimeHeader = document.getElementById('date-time-header');
-    var currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
+    var currentDateAndTime = dayjs().format('MM-DD-YYYY h:mm A');
     dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
-    // Update the sub-header text with the current date and time
+    
     var timeInterval = setInterval(() => {
-      currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
+      currentDateAndTime = dayjs().format('MM-DD-YYYY h:mm A');
       dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
     }, 60000);
   }
@@ -28,12 +25,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Function to make an XMLHttpRequest and display information in the flex box
-function fetchDataFromAPI(baseCurrency, targetCurrency) {
+  function fetchDataFromAPI(baseCurrency, targetCurrency) {
     var oReq = new XMLHttpRequest();
     var response;
     var additionalRequestStr;
-    if (typeof baseCurrency === 'undefined') {additionalRequestStr = "";} else {
+    if (typeof baseCurrency === 'undefined') {
+      additionalRequestStr = "";
+    } else {
       additionalRequestStr = targetCurrency + "&base_currency=" + baseCurrency;
+    }
 
     var requestEventListener = oReq.addEventListener("load", function () {
       if (oReq.status === 200) {
@@ -50,29 +50,28 @@ function fetchDataFromAPI(baseCurrency, targetCurrency) {
       }
     });
 
-    
-    }
     oReq.open(
       "GET",
       apiUrl + additionalRequestStr
     );
     oReq.send();
     
-    if (typeof baseCurrency === 'undefined'){
+    if (typeof baseCurrency === 'undefined') {
       console.log(response);
-      return response;}
+      return response;
+    }
   }
-  console.log(fetchDataFromAPI());
-  console.log(fetchDataFromAPI("USD","CAD"));
   
+  console.log(fetchDataFromAPI());
+  console.log(fetchDataFromAPI("USD", "CAD"));
 });
-
 
 // Define a callback function to handle the response
 function handleResponse(response) {
   if (!response.ok) {
     throw new Error(`HTTP error! Status: ${response.status}`);
-  }  // Assuming the response is JSON, you can parse it here
+  }
+  // Assuming the response is JSON, you can parse it here
   return response.json();
 }
 
@@ -90,8 +89,8 @@ function makeHttpRequest(url, callback) {
 }
 
 // Example usage:
- // Replace with your API URL// Define the callback function to handle the data
-
+// Replace with your API URL
+// Define the callback function to handle the data
 function handleData(data) {
   console.log('Received data:', data);
   // Perform your desired action with the data here
