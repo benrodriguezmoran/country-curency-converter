@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Parse the JSON response if it's successful
         try {
           response = JSON.parse(this.responseText);
-
+          console.log(response);
         } catch (error) {
           console.error("Error parsing JSON:", error);
           return;
@@ -75,8 +75,8 @@ function handleAvailableCurrencies(json) {
 
 }
 
-function handleConversion() {
-  
+function handleConversion(json) {
+
 }
  // Function to initialize Google Translate API
  function googleTranslateElementInit() {
