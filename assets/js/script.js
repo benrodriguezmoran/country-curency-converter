@@ -4,11 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Select the sub-header element by its id
     const dateTimeHeader = document.getElementById('date-time-header');
 
-    // Use day.js to get the current date and time
-    
-
     // Update the sub-header text with the current date and time
-    
     var timeInterval = setInterval(() => {
       var currentDateAndTime = dayjs().format('MM-DD-YYYY HH:mm:ss');
       dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
@@ -17,6 +13,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Call the updateTimeAndDate function when the page loads
   updateTimeAndDate();
+
+  // Function to initialize Google Translate API
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en', // Set the default page language (you can change this)
+      includedLanguages: 'es,fr,de', // Specify the languages you want to support
+    }, 'google_translate_element');
+  }
 
   // Function to make an XMLHttpRequest and display information in the flex box
 function fetchDataFromAPI(baseCurrency, targetCurrency) {

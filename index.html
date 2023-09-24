@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Currency Converter</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Currency Converter</title>
   
-  <body>
-    <!-- Main Header -->
-    <h1 class="page-header">Currency Converter</h1>
+  <!-- Include Google Translate API script -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+  <!-- Main Header -->
+  <h1 class="page-header">Currency Converter</h1>
 
-    <!-- Sub-header for Date and Time (centered) -->
-    <h2 id="date-time-header">Current Date and Time:</h2>
+  <!-- Sub-header for Date and Time (centered) -->
+  <h2 id="date-time-header">Current Date and Time:</h2>
 
-    <!--Amount and currency on the top-->
-    <div class="grid">
-        <div id="amount1">
-          <label for="amount1">Amount:</label>
-          <input type="number" id="amount1" name="amount1" required />
-          </div>
-      <div class="form1">
-          <label for="currency1">Currency:</label>
-
-          <select id="currency1" class="currencyDropdown" name="currency1">
-            <!-- API CALL HERE -->
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-
-          </select>
-        
-      </div>
+  <!--Amount and currency on the top-->
+  <div class="grid">
+    <div id="amount1">
+      <label for="amount1">Amount:</label>
+      <input type="number" id="amount1" name="amount1" required />
     </div>
+    <div class="form1">
+      <label for="currency1">Currency:</label>
+      <select id="currency1" class="currencyDropdown" name="currency1">
+        <!-- API CALL HERE -->
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select>
+    </div>
+  </div>
 
-    <!--Amount and currency on the bottom-->
-      <div class="grid2">
-        <div id="amount2">
-          <label for="amount2">Results:</label>
-        </div>
-        <div class="form2">
-          <label for="currency2">Currency:</label>
-        </div>
+  <!--Amount and currency on the bottom-->
+  <div class="grid2">
+    <div id="amount2">
+      <label for="amount2">Results:</label>
+    </div>
+    <div class="form2">
+      <label for="currency2">Currency:</label>
+    </div>
+    <div class="button2"> 
+      <select id="currency2" class="currencyDropdown" name="currency2">
+        <!-- API CALL HERE -->
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select>
+      <button type="submit">Convert</button>
+    </div>
+  </div>
 
-       <div class="button2"> 
-          <select id="currency2" class="currencyDropdown" name="currency2">
-            <!-- API CALL HERE -->
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-          </select>
-          <button type="submit">Convert</button>
-        </form>
-      </div>
+  <!-- Include Google Translate API container -->
+  <div id="google_translate_element"></div>
 
+  <!-- Include JavaScript and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
+  <script src="assets/js/script.js"></script>
 
-    <!-- Include JavaScript and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
-    <script src="assets/js/script.js"></script>
-  </body>
+  <!-- JavaScript to load Google Translate API -->
+  <script type="text/javascript">
+    // Load the Google Translate API widget
+    function loadGoogleTranslate() {
+      var script = document.createElement('script');
+      script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    // Call the function to load the widget
+    loadGoogleTranslate();
+  </script>
+</body>
 </html>
-
