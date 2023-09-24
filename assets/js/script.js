@@ -1,12 +1,17 @@
+const apiUrl = "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=";
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
   // Function to update the time and date sub-header
   function updateTimeAndDate() {
     // Select the sub-header element by its id
     const dateTimeHeader = document.getElementById('date-time-header');
-
+    var currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
+    dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
     // Update the sub-header text with the current date and time
     var timeInterval = setInterval(() => {
-      var currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
+      currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
       dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
     }, 60000);
   }
@@ -27,6 +32,8 @@ function fetchDataFromAPI(baseCurrency, targetCurrency) {
     var oReq = new XMLHttpRequest();
     var response;
     var additionalRequestStr;
+    if (typeof baseCurrency === 'undefined') {additionalRequestStr = "";} else {
+      additionalRequestStr = targetCurrency + "&base_currency=" + baseCurrency;
 
     var requestEventListener = oReq.addEventListener("load", function () {
       if (oReq.status === 200) {
@@ -43,12 +50,11 @@ function fetchDataFromAPI(baseCurrency, targetCurrency) {
       }
     });
 
-    if (typeof baseCurrency === 'undefined') {additionalRequestStr = "";} else {
-      additionalRequestStr = targetCurrency + "&base_currency=" + baseCurrency;
+    
     }
     oReq.open(
       "GET",
-      "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=" + additionalRequestStr
+      apiUrl + additionalRequestStr
     );
     oReq.send();
     
@@ -84,7 +90,7 @@ function makeHttpRequest(url, callback) {
 }
 
 // Example usage:
-const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1'; // Replace with your API URL// Define the callback function to handle the data
+ // Replace with your API URL// Define the callback function to handle the data
 
 function handleData(data) {
   console.log('Received data:', data);
