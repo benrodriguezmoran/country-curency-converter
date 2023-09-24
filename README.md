@@ -27,9 +27,9 @@ The user will then select a country in which to convert the currency amount by c
 After the button is clicked the amount will be displayed relative to the desired currency used in the selected country.    
 
 ## Deployed application
-- (PLACEHOLDER URL)
+- https://benrodriguezmoran.github.io/country-curency-converter/
 
-- (PLACEHOLDER GIF OF APPLICATION)
+![Demo](https://github.com/benrodriguezmoran/country-curency-converter/assets/139593153/af7490b6-a132-49aa-8dc3-86afb7a10d1c)
 
 ## Installation
 
