@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Update the sub-header text with the current date and time
     var timeInterval = setInterval(() => {
-      var currentDateAndTime = dayjs().format('MM-DD-YYYY HH:mm:ss');
+      var currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
       dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
     }, 1000);
   }
