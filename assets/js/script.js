@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var timeInterval = setInterval(() => {
       var currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
       dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
-    }, 1000);
+    }, 60000);
   }
 
   // Call the updateTimeAndDate function when the page loads
@@ -68,7 +68,9 @@ function handleResponse(response) {
     throw new Error(`HTTP error! Status: ${response.status}`);
   }  // Assuming the response is JSON, you can parse it here
   return response.json();
-}// Define a function to make the HTTP request and call the callback
+}
+
+// Define a function to make the HTTP request and call the callback
 function makeHttpRequest(url, callback) {
   fetch(url)
     .then(handleResponse)
@@ -79,10 +81,15 @@ function makeHttpRequest(url, callback) {
     .catch(error => {
       console.error(`Error: ${error.message}`);
     });
-}// Example usage:
+}
+
+// Example usage:
 const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1'; // Replace with your API URL// Define the callback function to handle the data
+
 function handleData(data) {
   console.log('Received data:', data);
   // Perform your desired action with the data here
-}// Make the HTTP request and pass the callback function
+}
+
+// Make the HTTP request and pass the callback function
 makeHttpRequest(apiUrl, handleData);
