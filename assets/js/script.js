@@ -1,14 +1,19 @@
+const apiUrl = "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=";
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
   // Function to update the time and date sub-header
   function updateTimeAndDate() {
     // Select the sub-header element by its id
     const dateTimeHeader = document.getElementById('date-time-header');
-
+    var currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
+    dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
     // Update the sub-header text with the current date and time
     var timeInterval = setInterval(() => {
-      var currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
+      currentDateAndTime = dayjs().format('MM-DD-YYYY H MM A');
       dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
-    }, 1000);
+    }, 60000);
   }
 
   // Call the updateTimeAndDate function when the page loads
@@ -27,6 +32,8 @@ function fetchDataFromAPI(baseCurrency, targetCurrency) {
     var oReq = new XMLHttpRequest();
     var response;
     var additionalRequestStr;
+    if (typeof baseCurrency === 'undefined') {additionalRequestStr = "";} else {
+      additionalRequestStr = targetCurrency + "&base_currency=" + baseCurrency;
 
     var requestEventListener = oReq.addEventListener("load", function () {
       if (oReq.status === 200) {
@@ -43,12 +50,11 @@ function fetchDataFromAPI(baseCurrency, targetCurrency) {
       }
     });
 
-    if (typeof baseCurrency === 'undefined') {additionalRequestStr = "";} else {
-      additionalRequestStr = targetCurrency + "&base_currency=" + baseCurrency;
+    
     }
     oReq.open(
       "GET",
-      "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=" + additionalRequestStr
+      apiUrl + additionalRequestStr
     );
     oReq.send();
     
@@ -68,7 +74,9 @@ function handleResponse(response) {
     throw new Error(`HTTP error! Status: ${response.status}`);
   }  // Assuming the response is JSON, you can parse it here
   return response.json();
-}// Define a function to make the HTTP request and call the callback
+}
+
+// Define a function to make the HTTP request and call the callback
 function makeHttpRequest(url, callback) {
   fetch(url)
     .then(handleResponse)
@@ -79,10 +87,15 @@ function makeHttpRequest(url, callback) {
     .catch(error => {
       console.error(`Error: ${error.message}`);
     });
-}// Example usage:
-const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1'; // Replace with your API URL// Define the callback function to handle the data
+}
+
+// Example usage:
+ // Replace with your API URL// Define the callback function to handle the data
+
 function handleData(data) {
   console.log('Received data:', data);
   // Perform your desired action with the data here
-}// Make the HTTP request and pass the callback function
+}
+
+// Make the HTTP request and pass the callback function
 makeHttpRequest(apiUrl, handleData);
