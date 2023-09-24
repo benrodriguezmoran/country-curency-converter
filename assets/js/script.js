@@ -1,9 +1,10 @@
 const apiUrl = "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=";
+const dateTimeHeader = document.getElementById('date-time-header');
 
 document.addEventListener('DOMContentLoaded', function () {
   // Function to update the time and date sub-header
   function updateTimeAndDate() {
-    const dateTimeHeader = document.getElementById('date-time-header');
+    
     var currentDateAndTime = dayjs().format('MM-DD-YYYY h:mm A');
     dateTimeHeader.textContent = `Current Date and Time: ${currentDateAndTime}`;
     
@@ -16,52 +17,47 @@ document.addEventListener('DOMContentLoaded', function () {
   // Call the updateTimeAndDate function when the page loads
   updateTimeAndDate();
 
-  // Function to initialize Google Translate API
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en', // Set the default page language (you can change this)
-      includedLanguages: 'es,fr,de', // Specify the languages you want to support
-    }, 'google_translate_element');
-  }
-
+ 
   // Function to make an XMLHttpRequest and display information in the flex box
   function fetchDataFromAPI(baseCurrency, targetCurrency) {
-    var oReq = new XMLHttpRequest();
+    var httpReq = new XMLHttpRequest();
     var response;
     var additionalRequestStr;
+
     if (typeof baseCurrency === 'undefined') {
       additionalRequestStr = "";
     } else {
       additionalRequestStr = targetCurrency + "&base_currency=" + baseCurrency;
     }
 
-    var requestEventListener = oReq.addEventListener("load", function () {
-      if (oReq.status === 200) {
+    httpReq.addEventListener("load", function () {
+      if (httpReq.status === 200) {
         // Parse the JSON response if it's successful
         try {
           response = JSON.parse(this.responseText);
+
         } catch (error) {
           console.error("Error parsing JSON:", error);
           return;
         }
       } else {
-        console.error("Request failed with status:", oReq.status);
+        console.error("Request failed with status:", httpReq.status);
         return;
       }
     });
 
-    oReq.open(
+    httpReq.open(
       "GET",
       apiUrl + additionalRequestStr
     );
-    oReq.send();
-    
+    httpReq.send();
+
     if (typeof baseCurrency === 'undefined') {
       console.log(response);
       return response;
     }
   }
-  
+
   console.log(fetchDataFromAPI());
   console.log(fetchDataFromAPI("USD", "CAD"));
 });
@@ -75,26 +71,17 @@ function handleResponse(response) {
   return response.json();
 }
 
-// Define a function to make the HTTP request and call the callback
-function makeHttpRequest(url, callback) {
-  fetch(url)
-    .then(handleResponse)
-    .then(data => {
-      // Call the callback function with the data from the response
-      callback(data);
-    })
-    .catch(error => {
-      console.error(`Error: ${error.message}`);
-    });
+function handleAvailableCurrencies(json) {
+
 }
 
-// Example usage:
-// Replace with your API URL
-// Define the callback function to handle the data
-function handleData(data) {
-  console.log('Received data:', data);
-  // Perform your desired action with the data here
+function handleConversion() {
+  
 }
-
-// Make the HTTP request and pass the callback function
-makeHttpRequest(apiUrl, handleData);
+ // Function to initialize Google Translate API
+ function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en', // Set the default page language (you can change this)
+    includedLanguages: 'es,fr,de', // Specify the languages you want to support
+  }, 'google_translate_element');
+}
