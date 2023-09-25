@@ -25,14 +25,6 @@ body {
 }
 
 
-.grid2{
-  text-align: center;
-  font-size: 45px ;
-  border-bottom: black dotted 10px;
-  background-color: rgba(215, 215, 215, 0.5);
-  line-height: 70px;
-}
-
 #date-time-header {
   text-align: center;
   font-size: 40px;
