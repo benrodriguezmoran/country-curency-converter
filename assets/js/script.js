@@ -1,6 +1,7 @@
 const apiUrl = "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=";
 const dateTimeHeader = document.getElementById('date-time-header');
 const currencySelector = $('.currencyDropdown');
+const moneyBox = document.getElementById('money');
 document.addEventListener('DOMContentLoaded', function () {
   // Function to update the time and date sub-header
   function updateTimeAndDate() {
@@ -34,13 +35,10 @@ function fetchDataFromAPI(baseCurrency, targetCurrency, amount) {
       // Parse the JSON response if it's successful
       try {
         response = JSON.parse(this.responseText);
-        console.log(Object.values(response.data)[0]);
         if (additionalRequestStr === "") {
           handleAvailableCurrencies(Object.keys(response.data));
         } else {
           handleConversion(amount, Object.values(response.data)[0]);
-          console.log("shit");
-          console.log(amount);
         }
       } catch (error) {
         console.error("Error parsing JSON:", error);
@@ -72,11 +70,10 @@ function handleAvailableCurrencies(currencies) {//string array for processing
 function handleConversion(amountVal, conversionRate) {
   var amount = parseFloat(amountVal);
   var rate = parseFloat(conversionRate);
-  console.log(conversionRate);
-  console.log(amountVal);
   var converted = (amount * rate);
-  $('#money').textContent = converted;
   console.log(converted);
+  moneyBox.textContent = converted;
+
 }
  // Function to initialize Google Translate API
  function googleTranslateElementInit() {
@@ -102,5 +99,5 @@ document.querySelector('button[type="button"]').addEventListener('click', functi
   console.log('Form 1 - Currency:', currency1);
   console.log('Form 2 - Currency:', currency2);
 
-  fetchDataFromAPI(currency1, currency2);
+  fetchDataFromAPI(currency1, currency2, amount1);
 });
