@@ -17,8 +17,8 @@
   <h2 id="date-time-header">Current Date and Time:</h2>
 
   <!--Amount and currency on the top-->
-  <div class="grid">
-    <div id="amount1">
+  <form class="grid">
+    <div>
       <label for="amount1">Amount:</label>
       <input type="number" id="amount1" name="amount1" required />
     </div>
@@ -26,16 +26,13 @@
       <label for="currency1">Currency:</label>
       <select id="currency1" class="currencyDropdown" name="currency1">
         <!-- API CALL HERE -->
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
       </select>
     </div>
-  </div>
+  </form>
 
   <!--Amount and currency on the bottom-->
   <div class="grid2">
-    <div id="amount2">
+    <div>
       <label for="amount2">Results:</label>
     </div>
          <!--Conversion currency div-->
@@ -47,11 +44,8 @@
     <div class="button2"> 
       <select id="currency2" class="currencyDropdown" name="currency2">
         <!-- API CALL HERE -->
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
       </select>
-      <button type="submit">Convert</button>
+      <button type="button">Convert</button>
     </div>
   </div>
 
