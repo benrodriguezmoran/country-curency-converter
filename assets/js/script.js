@@ -1,6 +1,6 @@
 const apiUrl = "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_yK5F5B2HZcfDTAFbadAylTvZSv9Oq2I8qoAFZAqk&currencies=";
 const dateTimeHeader = document.getElementById('date-time-header');
-
+const currencySelector = $('.currencyDropdown');
 document.addEventListener('DOMContentLoaded', function () {
   // Function to update the time and date sub-header
   function updateTimeAndDate() {
@@ -59,11 +59,13 @@ function fetchDataFromAPI(baseCurrency, targetCurrency, amount) {
 }
 
 fetchDataFromAPI();
-fetchDataFromAPI("USD", "CAD");
 
 
-function handleAvailableCurrencies(json) {//string array for processing
+function handleAvailableCurrencies(currencies) {//string array for processing
+  currencies.forEach(currencyName => {
+      $('.currencyDropdown').append('<option value='+currencyName+'>'+currencyName+'</option>')
 
+  });
 }
 
 function handleConversion(json) {
@@ -78,23 +80,22 @@ function handleConversion(json) {
 }
 
 // Define a function to log form values
-function logFormValues() {
+
+
+// Attach an event listener to the button
+document.querySelector('button[type="button"]').addEventListener('click', function(event) {
+  event.preventDefault()
   // Get the values from the first form
   const amount1 = document.getElementById('amount1').value;
   const currency1 = document.getElementById('currency1').value;
 
   // Get the values from the second form
-  const amount2 = document.getElementById('amount2').value;
   const currency2 = document.getElementById('currency2').value;
 
   // Log the values
   console.log('Form 1 - Amount:', amount1);
   console.log('Form 1 - Currency:', currency1);
-  console.log('Form 2 - Amount:', amount2);
   console.log('Form 2 - Currency:', currency2);
 
   fetchDataFromAPI(currency1, currency2);
-}
-
-// Attach an event listener to the button
-document.querySelector('button[type="submit"]').addEventListener('click', logFormValues);
+});
