@@ -61,6 +61,7 @@ fetchDataFromAPI();
 
 
 function handleAvailableCurrencies(currencies) {//string array for processing
+  currencies.sort();
   currencies.forEach(currencyName => {
       $('.currencyDropdown').append('<option value='+currencyName+'>'+currencyName+'</option>')
 
