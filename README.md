@@ -29,7 +29,7 @@ After the button is clicked the amount will be displayed relative to the desired
 ## Deployed application
 - https://benrodriguezmoran.github.io/country-curency-converter/
 
-![Demo](https://github.com/benrodriguezmoran/country-curency-converter/assets/139593153/af7490b6-a132-49aa-8dc3-86afb7a10d1c)
+![Demo](./assets/showcase.png)
 
 ## Installation
 
