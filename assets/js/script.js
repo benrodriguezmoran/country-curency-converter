@@ -35,7 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Parse the JSON response if it's successful
         try {
           response = this.responseText;
-          console.log(response);
+          if (additionalRequestStr === "") {
+            handleAvailableCurrencies(Object.keys(JSON.parse(response).data));
+          }
+          
+
         } catch (error) {
           console.error("Error parsing JSON:", error);
           return;
@@ -51,27 +55,13 @@ document.addEventListener('DOMContentLoaded', function () {
       apiUrl + additionalRequestStr
     );
     httpReq.send();
-
-    if (typeof baseCurrency === 'undefined') {
-      console.log(response);
-      return response;
-    }
   }
 
   fetchDataFromAPI();
   fetchDataFromAPI("USD", "CAD");
 });
 
-// Define a callback function to handle the response
-function handleResponse(response) {
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
-  }
-  // Assuming the response is JSON, you can parse it here
-  return response.json();
-}
-
-function handleAvailableCurrencies(json) {
+function handleAvailableCurrencies(json) {//string array for processing
 
 }
 
