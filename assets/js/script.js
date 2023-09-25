@@ -73,7 +73,7 @@ function handleConversion(amountVal, conversionRate) {
   var rate = parseFloat(conversionRate);
   var converted = (amount * rate);
   console.log(converted);
-  moneyBox.textContent = converted;
+  moneyBox.textContent = converted.toFixed(2);
 
 }
  // Function to initialize Google Translate API
