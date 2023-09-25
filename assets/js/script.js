@@ -17,49 +17,50 @@ document.addEventListener('DOMContentLoaded', function () {
   // Call the updateTimeAndDate function when the page loads
   updateTimeAndDate();
 
- 
-  // Function to make an XMLHttpRequest and display information in the flex box
-  function fetchDataFromAPI(baseCurrency, targetCurrency) {
-    var httpReq = new XMLHttpRequest();
-    var response;
-    var additionalRequestStr;
-
-    if (typeof baseCurrency === 'undefined') {
-      additionalRequestStr = "";
-    } else {
-      additionalRequestStr = targetCurrency + "&base_currency=" + baseCurrency;
-    }
-
-    httpReq.addEventListener("load", function () {
-      if (httpReq.status === 200) {
-        // Parse the JSON response if it's successful
-        try {
-          response = this.responseText;
-          if (additionalRequestStr === "") {
-            handleAvailableCurrencies(Object.keys(JSON.parse(response).data));
-          }
-          
-
-        } catch (error) {
-          console.error("Error parsing JSON:", error);
-          return;
-        }
-      } else {
-        console.error("Request failed with status:", httpReq.status);
-        return;
-      }
-    });
-
-    httpReq.open(
-      "GET",
-      apiUrl + additionalRequestStr
-    );
-    httpReq.send();
+});
+// Function to make an XMLHttpRequest and display information in the flex box
+function fetchDataFromAPI(baseCurrency, targetCurrency, amount) {
+  var httpReq = new XMLHttpRequest();
+  var response;
+  var additionalRequestStr;
+  var amount;
+  if (typeof baseCurrency === 'undefined') {
+    additionalRequestStr = "";
+  } else {
+    additionalRequestStr = targetCurrency + "&base_currency=" + baseCurrency;
   }
 
-  fetchDataFromAPI();
-  fetchDataFromAPI("USD", "CAD");
-});
+  httpReq.addEventListener("load", function () {
+    if (httpReq.status === 200) {
+      // Parse the JSON response if it's successful
+      try {
+        response = JSON.parse(this.responseText);
+        console.log(Object.values(response.data)[0]);
+        if (additionalRequestStr === "") {
+          handleAvailableCurrencies(Object.keys(response.data));
+        } else {
+          handleConversion(amount, Object.values(response.data)[0])
+        }
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+        return;
+      }
+    } else {
+      console.error("Request failed with status:", httpReq.status);
+      return;
+    }
+  });
+
+  httpReq.open(
+    "GET",
+    apiUrl + additionalRequestStr
+  );
+  httpReq.send();
+}
+
+fetchDataFromAPI();
+fetchDataFromAPI("USD", "CAD");
+
 
 function handleAvailableCurrencies(json) {//string array for processing
 
@@ -91,6 +92,8 @@ function logFormValues() {
   console.log('Form 1 - Currency:', currency1);
   console.log('Form 2 - Amount:', amount2);
   console.log('Form 2 - Currency:', currency2);
+
+  fetchDataFromAPI(currency1, currency2);
 }
 
 // Attach an event listener to the button
